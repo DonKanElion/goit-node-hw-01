@@ -6,12 +6,15 @@
   "description": "My first project on Node.js",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "less1": "node main.js"
   },
   "author": "Anton Paliienko",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "nanoid": "^3.3.4"
   },
   "devDependencies": {
     "nodemon": "^3.0.1"
