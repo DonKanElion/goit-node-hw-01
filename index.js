@@ -1,57 +1,55 @@
-//  ✅ Робота з JSON. ур. 2 Марченко
+const { program } = require("commander");
+
+program
+  .option("-a, --action <type>", "choose action")
+  .option("-i, --id <type>", "user id")
+  .option("-n, --name <type>", "user name")
+  .option("-e, --email <type>", "user email")
+  .option("-p, --phone <type>", "user phone");
+
+program.parse(process.argv);
+const options = program.opts();
+console.log(options);
+
 const {
-  getAll,
-  getById,
+  listContacts,
+  getContactById,
   addContact,
-  updateById,
-  removeById,
+  updateContact,
+  removeContact,
 } = require("./contacts");
 
 const invokeAction = async ({ action, id, name, email, phone }) => {
   switch (action) {
-    case "getAll":
-      const allContacts = await getAll();
-      console.log("🌽Get All - Done 🪲 ", allContacts);
+    case "list":
+      const allContacts = await listContacts();
+      console.table(allContacts);
       break;
-    case "getById":
-      const getContact = await getById(id);
-      console.log("test ", getContact);
+    case "get":
+      const getContact = await getContactById(id);
+      console.log(getContact);
       break;
-    case "addContact":
+    case "add":
       const newContact = await addContact({ name, email, phone });
       console.log("🐍 Add new contact", newContact);
       break;
-    case "updateById":
-      const updateContacts = await updateById(id, { name, email, phone });
-      console.log("🐝 updateContacts: ", updateContacts);
+    case "update":
+      const updContact = await updateContact(id, { name, email, phone });
+      console.log("🐝 updateContacts: ", updContact);
       break;
-    case "removeById":
-      const deletedContacts = await removeById(id);
+    case "remove":
+      const resp = await removeContact(id);
+      console.log(resp);
       break;
     default:
-      console.log("Unknown action");
+      console.warn("\x1B[31m Unknown action type!");
   }
 };
 
-// METHODS IN WORKS 👇
+invokeAction(options);
 
-// invokeAction({ action: "getAll" });
-// const testId = "002";
-// invokeAction({ action: "getById", id: `${testId}` });
-
-// invokeAction({
-//   action: "addContact",
-//   name: "Colta",
-//   email: "Slara@kyliu,com",
-//   phone: "78373 733 28 2",
-// }); // запускається нескінчкений цикл!!!!
-
-// invokeAction({
-//   action: "updateById",
-//   id: "002",
-//   name: "🦁 Mycola",
-//   email: "dgfjs@mdsgma.ckcv",
-//   phone: "+ 367 67 6767",
-// });
-
-// invokeAction({ action: "removeById", id: "003" });
+// Команди:
+// node index.js --action="list"
+// node index.js --action="get" --id 05olLMgyVQdWRwgKfg5J6
+// node index.js --action="add" --name Mango --email mango@gmail.com --phone 322-22-22
+// node index.js --action="remove" --id qdggE76Jtbfd9eWJHrssH
