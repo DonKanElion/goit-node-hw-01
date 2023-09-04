@@ -7,8 +7,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "dev": "nodemon index.js",
-    "less1": "node main.js"
+    "dev": "nodemon index.js"
   },
   "author": "Anton Paliienko",
   "license": "ISC",

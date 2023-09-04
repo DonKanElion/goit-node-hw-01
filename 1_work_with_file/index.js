@@ -1,7 +1,7 @@
-// ✅ Робота з файлами ур. 2 Марченко
+// ✅ 1. Робота з файлами ур. 2 Марченко
 const fs = require("fs/promises");
 
-const contactsPath = "./db/contacts.json";
+const contactsPath = './db/contacts.json';
 
 const contactsOperation = async ({ action }) => {
   switch (action) {
