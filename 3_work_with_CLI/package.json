@@ -1,5 +1,5 @@
 {
-  "name":  "2_work_with_json",
+  "name": "3_work_with_cli",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -7,10 +7,12 @@
     "start": "node index.js",
     "dev": "nodemon index.js"
   },
-  "author": "",
+  "author": "Anton Paliienk",
   "license": "ISC",
   "dependencies": {
-    "nanoid": "^3.0.0"
+    "commander": "^11.0.0",
+    "nanoid": "^3.0.0",
+    "yargs": "^17.7.2"
   },
   "devDependencies": {
     "nodemon": "^3.0.1"
